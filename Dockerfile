@@ -7,7 +7,7 @@ MAINTAINER nigel.thomas@guavus.com
 
 # Use jq to manipulate JSON files such as the slab file
 RUN apt-get update &&\
-    apt-get install -y jq
+    apt-get install -y jq git
 
 # This environment variable can be set when building the image
 ENV GIT_PROJECT_NAME=undefined

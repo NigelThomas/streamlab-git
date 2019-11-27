@@ -1,2 +1,2 @@
 #¡/bin/bash
-docker build -t nigelclthomas/generic .
+docker build -t nigelclthomas/streamlab-git .
