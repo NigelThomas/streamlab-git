@@ -1,9 +1,15 @@
 # streamlab-git
-This repository creates a Docker image (based on one of the standard Guavus SQLstream docker images) which, when it runs 
+This repository contains Dockerfiles to create standard Docker images (based on one of the standard Guavus SQLstream docker images) which, when they run,
 will pull a git repository (for example from bitbucket.com or github.com), unpack any StreamLab project export files (slab
 files) and set up the SQLstream s-Server catalog accordingly.
 
-Dashboards included in the projects are extracted from the StreamLab project exports and made available for s-Dashboard.
+There are two scenarios:
+
+1. `development-image`: this image includes the StreamLab development environment. When the image is started all StreamLab projects are extracted from the
+project repository and imported into the local StreamLab / Rose environment. The developer will be able to open the projects, work on them, and finally save them by exporting them 
+to his desktop and adding the changes to the git repository.
+2. `production-image`: this image does NOT include the StreamLab development environment. When the image is started the StreamLab project files are processed to create the required SQL and
+dashboards included in the StreamLab projects are extracted from the StreamLab project exports and made available for s-Dashboard.
 
 Any requirement for per-project customization is intended to be accomplished by modifying scripts that live in the remote
 application repository.
