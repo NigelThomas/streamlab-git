@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Example of how to start a container using the streamlab-git image and referencing a git repository
+# Example of how to start a container using the streamlab-git-dev image and referencing a git repository
 
-BASE_IMAGE=streamlab-git
+BASE_IMAGE=streamlab-git-dev
 GIT_ACCOUNT=https://github.com/NigelThomas
 GIT_PROJECT_NAME=streamlab-buses
 CONTAINER_NAME=buses
