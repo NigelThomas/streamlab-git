@@ -30,7 +30,7 @@ EXPOSE 80 5560 5580 5595
 # when the container starts, we want to start the project pumps and then tail the s-Server trace log
 # we late bind to sqlstream-docker-utils as well as to the target StreamLab project
 
-ENTRYPOINT export PATH=/home/sqlstream/bin:/home/sqlstream/sqlstream-docker-utils:$PATH:$SQLSTREAM_HOME/bin &&\
+ENTRYPOINT export PATH=/home/sqlstream/bin:/home/sqlstream/${GIT_PROJECT_NAME}:/home/sqlstream/sqlstream-docker-utils:$PATH:$SQLSTREAM_HOME/bin &&\
            git clone https://github.com/NigelThomas/sqlstream-docker-utils.git &&\ 
            GIT_PROJECT_NAME=${GIT_PROJECT_NAME} GIT_ACCOUNT=${GIT_ACCOUNT} fetch_and_start_project.sh
 
