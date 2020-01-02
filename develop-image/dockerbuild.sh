@@ -1,2 +1,2 @@
 #¡/bin/bash
-docker build -t streamlab-git-dev .
+docker build --pull=true -t streamlab-git-dev .

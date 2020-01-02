@@ -30,7 +30,7 @@ EXPOSE 80 5560 5580 5585 5590 5595
 # when the container starts, we want to load the latest versions of the StreamLan projects, start the project pumps and then tail the s-Server trace log
 # we late bind to sqlstream-docker-utils as well as to the target StreamLab project
 
-ENTRYPOINT export PATH=/home/sqlstream/bin:/home/sqlstream/sqlstream-docker-utils:$PATH:$SQLSTREAM_HOME/bin &&\
+ENTRYPOINT export PATH=/home/sqlstream/bin:/home/sqlstream/${GIT_PROJECT_NAME}:/home/sqlstream/sqlstream-docker-utils:$PATH:$SQLSTREAM_HOME/bin &&\
            git clone https://github.com/NigelThomas/sqlstream-docker-utils.git &&\ 
            GIT_PROJECT_NAME=${GIT_PROJECT_NAME} GIT_ACCOUNT=${GIT_ACCOUNT} load_streamlab_projects.sh 
 
