@@ -1,7 +1,7 @@
 # Dockerfile
 
 # Base the image on standard SQLstream image
-FROM sqlstream/minimal:release
+FROM sqlstream/minimal:steady
 MAINTAINER nigel.thomas@guavus.com
 
 # Use jq to manipulate JSON files such as the slab file
