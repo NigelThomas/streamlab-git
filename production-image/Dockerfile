@@ -4,13 +4,16 @@
 FROM sqlstream/minimal:steady
 MAINTAINER nigel.thomas@guavus.com
 
+# Use git to get project files
 # Use jq to manipulate JSON files such as the slab file
+# use nano for debugging
 RUN apt-get update &&\
-    apt-get install -y jq git
+    apt-get install -y nano jq git
 
 # This environment variable can be set when building the image
 ENV GIT_PROJECT_NAME=undefined
 ENV GIT_ACCOUNT=undefined
+ENV LOAD_SLAB_FILES=
 
 # copy the setup and startup and other scripts from the Dockerfile directory
 COPY --chown=sqlstream:sqlstream *.sh /tmp/
@@ -32,5 +35,5 @@ EXPOSE 80 5560 5580 5595
 
 ENTRYPOINT export PATH=/home/sqlstream/bin:/home/sqlstream/${GIT_PROJECT_NAME}:/home/sqlstream/sqlstream-docker-utils:$PATH:$SQLSTREAM_HOME/bin &&\
            git clone https://github.com/NigelThomas/sqlstream-docker-utils.git &&\ 
-           GIT_PROJECT_NAME=${GIT_PROJECT_NAME} GIT_ACCOUNT=${GIT_ACCOUNT} fetch_and_start_project.sh
+           GIT_PROJECT_NAME=${GIT_PROJECT_NAME} GIT_ACCOUNT=${GIT_ACCOUNT} LOAD_SLAB_FILES="${LOAD_SLAB_FILES}" fetch_and_start_project.sh
 
