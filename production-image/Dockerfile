@@ -1,7 +1,7 @@
 # Dockerfile
 
 # Base the image on standard SQLstream image
-FROM sqlstream/minimal:steady
+FROM sqlstream/minimal:release
 MAINTAINER nigel.thomas@guavus.com
 
 # Use git to get project files
