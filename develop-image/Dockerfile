@@ -1,12 +1,15 @@
 # Dockerfile
 
 # Base the image on standard SQLstream image
-FROM sqlstream/complete:release
+FROM sqlstream/development:release
 MAINTAINER nigel.thomas@guavus.com
 
 # Use jq to manipulate JSON files such as the slab file
-RUN apt-get update &&\
-    apt-get install -y jq git
+RUN  \
+    apt-get update &&\
+    apt-get install -y jq git &&\
+    rm -rf /var/lib/apt/lists/*
+
 
 # This environment variable can be set when building the image
 ENV GIT_PROJECT_NAME=undefined
