@@ -1,2 +1,3 @@
 #¡/bin/bash
-docker build --pull=true -t streamlab-git .
+docker build --pull=true -t sqlstream/streamlab-git .
+docker push sqlstream/streamlab-git
