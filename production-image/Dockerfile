@@ -15,6 +15,7 @@ RUN apt-get update &&\
 ENV GIT_PROJECT_NAME=undefined
 ENV GIT_ACCOUNT=undefined
 ENV LOAD_SLAB_FILES=
+ENV SQLSTREAM_HEAP_MEMORY=
 
 # copy the setup and startup and other scripts from the Dockerfile directory
 COPY --chown=sqlstream:sqlstream *.sh /tmp/
@@ -36,5 +37,5 @@ EXPOSE 80 5560 5580 5595
 
 ENTRYPOINT export PATH=/home/sqlstream/bin:/home/sqlstream/${GIT_PROJECT_NAME}:/home/sqlstream/sqlstream-docker-utils:$PATH:$SQLSTREAM_HOME/bin &&\
            git clone https://github.com/NigelThomas/sqlstream-docker-utils.git &&\ 
-           GIT_PROJECT_NAME=${GIT_PROJECT_NAME} GIT_ACCOUNT=${GIT_ACCOUNT} LOAD_SLAB_FILES="${LOAD_SLAB_FILES}" fetch_and_start_project.sh
+           GIT_PROJECT_NAME=${GIT_PROJECT_NAME} GIT_ACCOUNT=${GIT_ACCOUNT} LOAD_SLAB_FILES="${LOAD_SLAB_FILES}" SQLSTREAM_HEAP_MEMORY="${SQLSTREAM_HEAP_MEMORY}" fetch_and_start_project.sh
 
