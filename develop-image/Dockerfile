@@ -22,7 +22,8 @@ ENV GIT_PROJECT_NAME=undefined
 ENV GIT_ACCOUNT=undefined
 ENV LOAD_SLAB_FILES=
 ENV SQLSTREAM_HEAP_MEMORY=
-
+ENV SQLSTREAM_DISABLE_PUMPS=
+ENV SQLSTREAM_SLEEP_SECS=5
 
 WORKDIR /home/sqlstream 
 
@@ -33,6 +34,13 @@ EXPOSE 80 5560 5580 5585 5590 5595
 # we late bind to sqlstream-docker-utils as well as to the target StreamLab project
 
 ENTRYPOINT export PATH=/home/sqlstream/bin:/home/sqlstream/${GIT_PROJECT_NAME}:/home/sqlstream/sqlstream-docker-utils:$PATH:$SQLSTREAM_HOME/bin &&\
+	   # remove existing in case we are restarting a commited copy of a container
+	   rm -rf /home/sqlstream/sqlstream-docker-utils &&\
+	   rm -rf /home/sqlstream/${GIT_PROJECT_NAME} &&\
            git clone https://github.com/NigelThomas/sqlstream-docker-utils.git &&\ 
-           $GIT_PROJECT_HASH=$GIT_PROJECT_HASH GIT_PROJECT_NAME=${GIT_PROJECT_NAME} GIT_ACCOUNT=${GIT_ACCOUNT} LOAD_SLAB_FILES="${LOAD_SLAB_FILES}" SQLSTREAM_HEAP_MEMORY="${SQLSTREAM_HEAP_MEMORY}" load_streamlab_projects.sh 
+           GIT_PROJECT_HASH=$GIT_PROJECT_HASH GIT_PROJECT_NAME=${GIT_PROJECT_NAME} GIT_ACCOUNT=${GIT_ACCOUNT} \
+            LOAD_SLAB_FILES="${LOAD_SLAB_FILES}" \
+            SQLSTREAM_HEAP_MEMORY="${SQLSTREAM_HEAP_MEMORY}" SQLSTREAM_DISABLE_PUMPS="$SQLSTREAM_DISABLE_PUMPS" SQLSTREAM_SLEEP_SECS=${SQLSTREAM_SLEEP_SECS} \
+            fetch_and_start_project.sh
+
 
