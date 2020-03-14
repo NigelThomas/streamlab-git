@@ -12,7 +12,7 @@ MAINTAINER nigel.thomas@guavus.com
 # Use jq to manipulate JSON files such as the slab file
 RUN  \
     apt-get update &&\
-    apt-get install -y jq git &&\
+    apt-get install -y git &&\
     rm -rf /var/lib/apt/lists/*
 
 

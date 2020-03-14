@@ -12,7 +12,7 @@ MAINTAINER nigel.thomas@guavus.com
 # Use jq to manipulate JSON files such as the slab file
 # use nano for debugging
 RUN apt-get update &&\
-    apt-get install -y nano jq git &&\
+    apt-get install -y nano git &&\
     rm -rf /var/lib/apt/lists/*
 
 # This environment variable can be set when building the image
