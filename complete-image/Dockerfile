@@ -43,6 +43,6 @@ ENTRYPOINT export PATH=/home/sqlstream/bin:/home/sqlstream/${GIT_PROJECT_NAME}:/
            GIT_PROJECT_HASH=$GIT_PROJECT_HASH GIT_PROJECT_NAME=${GIT_PROJECT_NAME} GIT_ACCOUNT=${GIT_ACCOUNT} \
             LOAD_SLAB_FILES="${LOAD_SLAB_FILES}" \
             SQLSTREAM_HEAP_MEMORY="${SQLSTREAM_HEAP_MEMORY}" SQLSTREAM_DISABLE_PUMPS="$SQLSTREAM_DISABLE_PUMPS" SQLSTREAM_SLEEP_SECS=${SQLSTREAM_SLEEP_SECS} \
-            fetch_and_start_project.sh
+            load_streamlab_projects.sh
 
 
