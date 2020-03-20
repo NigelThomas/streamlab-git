@@ -39,7 +39,7 @@ ENTRYPOINT export PATH=/home/sqlstream/bin:/home/sqlstream/${GIT_PROJECT_NAME}:/
 	   rm -rf /home/sqlstream/sqlstream-docker-utils &&\
 	   rm -rf /home/sqlstream/${GIT_PROJECT_NAME} &&\
            git clone https://github.com/NigelThomas/sqlstream-docker-utils.git &&\ 
-           /home/sqlstream/startservices.sh &&\
+           . /home/sqlstream/startservices.sh &&\
            GIT_PROJECT_HASH=$GIT_PROJECT_HASH GIT_PROJECT_NAME=${GIT_PROJECT_NAME} GIT_ACCOUNT=${GIT_ACCOUNT} \
             LOAD_SLAB_FILES="${LOAD_SLAB_FILES}" \
             SQLSTREAM_HEAP_MEMORY="${SQLSTREAM_HEAP_MEMORY}" SQLSTREAM_DISABLE_PUMPS="$SQLSTREAM_DISABLE_PUMPS" SQLSTREAM_SLEEP_SECS=${SQLSTREAM_SLEEP_SECS} \

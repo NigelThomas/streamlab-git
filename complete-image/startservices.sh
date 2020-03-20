@@ -11,7 +11,7 @@ if [ ! -z "$SQLSTREAM_JAVA_SECURITY_KRB5_CONF" ]
    echo "SQLSTREAM_JAVA_SECURITY_KRB5_CONF=$SQLSTREAM_JAVA_SECURITY_KRB5_CONF" >> /etc/sqlstream/environment
 fi
 # s-server started by fetch_and_start_project
-service s-serverd start 
+# service s-serverd start 
 service s-dashboardd start 
 service webagentd start
 service streamlabd start 
@@ -23,3 +23,4 @@ CP=$SQLSTREAM_HOME/../clienttools/blaze/coverpage-service/
 cd $SQLSTREAM_HOME/demo/coverpage/
 gulp build &>/dev/null
 service coverpaged start
+cd /home/sqlstream
