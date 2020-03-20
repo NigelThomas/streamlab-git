@@ -26,6 +26,7 @@ ENV SQLSTREAM_DISABLE_PUMPS=
 ENV SQLSTREAM_SLEEP_SECS=5
 
 WORKDIR /home/sqlstream 
+COPY    /startservices.sh /home/sqlstream
 
 # the base image already EXPOSEs required ports - add EXPOSE here if you need to change, extend or reduce the list
 EXPOSE 80 5560 5580 5585 5590 5595
@@ -38,6 +39,7 @@ ENTRYPOINT export PATH=/home/sqlstream/bin:/home/sqlstream/${GIT_PROJECT_NAME}:/
 	   rm -rf /home/sqlstream/sqlstream-docker-utils &&\
 	   rm -rf /home/sqlstream/${GIT_PROJECT_NAME} &&\
            git clone https://github.com/NigelThomas/sqlstream-docker-utils.git &&\ 
+           /home/sqlstream/startservices.sh &&\
            GIT_PROJECT_HASH=$GIT_PROJECT_HASH GIT_PROJECT_NAME=${GIT_PROJECT_NAME} GIT_ACCOUNT=${GIT_ACCOUNT} \
             LOAD_SLAB_FILES="${LOAD_SLAB_FILES}" \
             SQLSTREAM_HEAP_MEMORY="${SQLSTREAM_HEAP_MEMORY}" SQLSTREAM_DISABLE_PUMPS="$SQLSTREAM_DISABLE_PUMPS" SQLSTREAM_SLEEP_SECS=${SQLSTREAM_SLEEP_SECS} \
