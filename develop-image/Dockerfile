@@ -1,7 +1,7 @@
 # Dockerfile
 
 # This argument can be set when building the image
-ARG BASE_IMAGE_LABEL=release
+ARG BASE_IMAGE_LABEL=latest
 
 # Base the image on standard SQLstream image using optional version tag if provided
 

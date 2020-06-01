@@ -1,7 +1,7 @@
 # Dockerfile
 
 # Can decide which tag to use
-ARG BASE_IMAGE_LABEL=release
+ARG BASE_IMAGE_LABEL=latest
 
 # Base the image on standard SQLstream image
 FROM sqlstream/minimal:$BASE_IMAGE_LABEL

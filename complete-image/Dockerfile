@@ -1,7 +1,7 @@
 # Dockerfile
 
 # This argument can be set when building the image
-ARG BASE_IMAGE_LABEL=release
+ARG BASE_IMAGE_LABEL=latest
 
 # Base the image on standard SQLstream image using optional version tag if provided
 
@@ -29,7 +29,7 @@ WORKDIR /home/sqlstream
 COPY    /startservices.sh /home/sqlstream
 
 # the base image already EXPOSEs required ports - add EXPOSE here if you need to change, extend or reduce the list
-EXPOSE 80 5560 5580 5585 5590 5595
+#EXPOSE 22 80 5570 5590 5585 5595 5580 5560 9092 2181
 
 # when the container starts, we want to load the latest versions of the StreamLan projects, start the project pumps and then tail the s-Server trace log
 # we late bind to sqlstream-docker-utils as well as to the target StreamLab project
